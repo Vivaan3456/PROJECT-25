@@ -3,45 +3,42 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
+const Render = Matter.Render;
+var dustbinObj,groundObject,paper
+var world;
 
-var stone,rubber,hammer,ground
-
-function preload()
-{
-	
-}
 
 function setup() {
-	createCanvas(800, 700);
+	createCanvas(1600, 700);
+	rectMode(CENTER);
 
 
 	engine = Engine.create();
 	world = engine.world;
-
-	//Create the Bodies Here.
-
+	
+	groundObject=new ground(width/2,670,width,20);
+	dustbinObj=new dustbin(1200,650);
+	paper=new Paper(400,300,40);
 
 	Engine.run(engine);
-	hammer=new Hammer(100,100)
-	ground=new Ground(400,700,800,30)
-  
-	stone=new Stone(400,640,100,100)
-	rubber=new Rubber(200,200,40)
-  
   
 }
 
 
 function draw() {
   rectMode(CENTER);
-  background("lightBlue");
-  
-  hammer.display();
-  ground.display();
-  stone.display();
-  rubber.display();
+  background(230);
  
+
+  groundObject.display();
+  dustbinObj.display();
+  paper.display();
+  //keyCode();
+
 }
-
-
+ //function keyCode(){
+	//if(keyCode===UP_ARROW){
+	//	paper.x=dustbinObj.x;
+	//}
+//}
 
